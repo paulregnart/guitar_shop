@@ -1,4 +1,5 @@
 ActiveAdmin.register Guitar do
+  permit_params :model, :make, :price
 
   
   # See permitted parameters documentation:
