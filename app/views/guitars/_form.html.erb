@@ -1,29 +1,28 @@
-<%= form_for(@guitar) do |f| %>
-  <% if @guitar.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@guitar.errors.count, "error") %> prohibited this guitar from being saved:</h2>
-
-      <ul>
-      <% @guitar.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-      <% end %>
-      </ul>
+<%= form_for @guitar, :html => { :class => 'form-horizontal form-model' } do |f| %>
+  <div class="form-group">
+    <%= f.label :model, :class => 'control-label col-md-2' %>
+    <div class="col-md-10">
+      <%= f.text_field :model, :class => 'text-field form-control' %>
     </div>
-  <% end %>
+  </div>
+  <div class="form-group">
+    <%= f.label :make, :class => 'control-label col-md-2' %>
+    <div class="col-md-10">
+      <%= f.text_field :make, :class => 'text-field form-control' %>
+    </div>
+  </div>
+  <div class="form-group">
+    <%= f.label :price, :class => 'control-label col-md-2' %>
+    <div class="col-md-10">
+      <%= f.text_field :price, :class => 'text-field form-control' %>
+    </div>
+  </div>
 
-  <div class="field">
-    <%= f.label :model %><br>
-    <%= f.text_field :model %>
-  </div>
-  <div class="field">
-    <%= f.label :make %><br>
-    <%= f.text_field :make %>
-  </div>
-  <div class="field">
-    <%= f.label :price %><br>
-    <%= f.text_field :price %>
-  </div>
-  <div class="actions">
-    <%= f.submit %>
+  <div class="form-group">
+    <div class='col-md-offset-2 col-md-10'>
+      <%= f.submit nil, :class => 'btn btn-primary' %>
+      <%= link_to t('.cancel', :default => t("helpers.links.cancel")),
+                  guitars_path, :class => 'btn btn-default' %>
+    </div>
   </div>
 <% end %>
